@@ -25,12 +25,10 @@ function dm(message) {
 		const letter = split[2]
 		if (targetid == "undefined" || targetid == null || targetid == "" && letter == "undefined" || letter == null || letter == "") {
 			message.channel.send("Command format: ``/dm,[USER_ID],[MESSAGE]``")
-		} else
-		if (targetid == "undefined" || targetid == null || targetid == "") {
+		} else if (targetid == "undefined" || targetid == null || targetid == "") {
 			message.channel.send("❗ Missing ``USER_ID``!\nType ``/dm`` to see the full command.")
 			message.react("❌")
-		} else
-		if (letter == "undefined" || letter == null || letter == "") {
+		} else if (letter == "undefined" || letter == null || letter == "") {
 			message.channel.send("❗ Missing ``MESSAGE``!\nType ``/dm`` to see the full command.")
 			message.react("❌")
 		} else {
@@ -51,7 +49,8 @@ function dm(message) {
 		}
 	} else {
 		message.channel.send("❗ Insufficient permissions")
-	}
+    }
+    message.delete();
 }
 
 function receivedm(message) {
