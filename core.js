@@ -20,14 +20,15 @@ client.on('message', msg => {
         if (user) {
             const member = msg.guild.member(user);
             if (member) {
-                member.kick('Reason, that is displayed in audit logs');
-                member.then(() => {
-                    msg.reply(`${user.tag} has been successfully kicked!`);
-                })
-                member.catch(err => {
-                    msg.reply('The action is not performable.');
-                    console.error(err);
-                });
+                member
+                    .kick('Reason, that is displayed in audit logs');
+                    .then(() => {
+                        msg.reply(`${user.tag} has been successfully kicked!`);
+                    })
+                    .catch(err => {
+                        msg.reply('The action is not performable.');
+                        console.error(err);
+                    })
             } else {
                 msg.reply(`The user isn't in this server.`)
             }
