@@ -18,8 +18,9 @@ client.on('message', message => {
         if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
             const embed = new Discord.MessageEmbed()
-                .setTitle('TIEŠSAISTES STUNDA')
-                .setAuthor('Fizika')
+                .setImage(/images/logo.png)
+                .setTitle('FIZIKA')
+                .setAuthor('TIEŠSAISTES STUNDA')
                 .setDescription('Spied uz saites, lai pievienotos stundai: ')
                 .setFooter('ID: 1234 5678 9101, Passcode: 123456');
             message.channel.send(embed)
