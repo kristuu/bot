@@ -21,8 +21,9 @@ client.on('message', msg => {
                 .setTitle('TIEŠSAISTES STUNDA')
                 .setAuthor('Fizika')
                 .setDescription('Spied uz saites, lai pievienotos stundai: ')
-                .setFooter('ID: 1234 5678 9101, Passcode: 123456')
-        }
+                .setFooter('ID: 1234 5678 9101, Passcode: 123456');
+            msg.channel.send.embed()
+        };
     };
 });
 
