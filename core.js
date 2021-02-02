@@ -10,7 +10,7 @@ client.on('message', message => {
         }
     } else {
         if (message.content.startsWith(prefix)) {
-            if (message.content === prefix + 'dm') {
+            if (message.content == prefix + 'dm') {
                 dm(message);
             }
         } 
