@@ -1,1 +1,1 @@
-worker: node ttp_core.js
+worker: node core.js
