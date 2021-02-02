@@ -27,7 +27,7 @@ client.on('message', msg => {
                 member.catch(err => {
                     msg.reply('The action is not performable.');
                     console.error(err);
-                })
+                });
             } else {
                 msg.reply(`The user isn't in this server.`)
             }
