@@ -18,7 +18,7 @@ client.on('message', message => {
 })
 
 function dm(message) {
-	var admin = ["482586747201519617"]; // can dm users via bot, using the /dm command
+	var admin = ["746662409724231798","482586747201519617","290452091946663936"]; //can dm users via bot, using the /dm command
 	if (admin.includes(message.author.id) == true) {
 		const split = message.content.split(",");
 		const targetid = split[1]
@@ -51,8 +51,20 @@ function dm(message) {
 		}
 	} else {
 		message.channel.send("❗ Insufficient permissions")
-    }
-    message.delete();
+	}
+}
+
+function receivedm(message) {
+	if (message.attachments.size > 0) {
+		message.channel.send(">>> ❗ This bot cannot transfer images or files - please send a link of your image or file.\nThe message you sent has been rejected - if you sent any text with the image, please include it in the next message you send.")
+	} else {
+	let botdms = client.channels.cache.get("799266353999642664")
+	const dmreceivedEmbed = new Discord.MessageEmbed()
+	.setColor('#2dcc70')
+	.setAuthor(message.author.tag + "   |   " + message.author, message.author.avatarURL())
+	.setDescription(message.content)
+	botdms.send(dmreceivedEmbed);
+	}
 }
 
 client.on('message', message => {
