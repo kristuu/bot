@@ -11,4 +11,4 @@ client.on('message', message => {
 });
 
 client.login(process.env.BOT_TOKEN);
-//©raltec 2019 ©raltec 2020
+//©raltec 2020
