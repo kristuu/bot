@@ -6,8 +6,8 @@ client.on('message', message => {
     //    space for dm commands  
     } else {
         if (message.content == 'ping?') {
-                    var a = ['array1', 'array2', 'tu esi padla']
-                    message.react(':clown:')
+                    var a = ['tu esi padla']
+                    message.react('🤡')
                     message.channel.send(a[Math.floor(Math.random() * a.length)]);
             }
     }
