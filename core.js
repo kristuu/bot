@@ -15,7 +15,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
     if (msg.author.id === '482586747201519617') {
-        if (msg.startsWith('/stunda') {
+        if (msg.startsWith('/stunda')) {
             msg.channel.send('@everyone');
             const embed = new Discord.MessageEmbed()
                 .setTitle('TIEŠSAISTES STUNDA')
