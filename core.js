@@ -1,14 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('message', message => {
-    if (message.guild === null) {
-    //    space for dm commands  
+client.on('message', msg => {
+    if (msg.guild === null) {
+        msg.client.send('Gay');
     } else {
-        if (message.content == 'ping?') {
+        if (msg.content == 'ping?') {
                     var a = ['tu esi padla']
-                    message.react('🤡')
-                    message.channel.send(a[Math.floor(Math.random() * a.length)]);
+                    msg.react('🤡')
+                    msg.channel.send(a[Math.floor(Math.random() * a.length)]);
             }
     }
 });
