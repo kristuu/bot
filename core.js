@@ -1,3 +1,6 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
 client.on('message', message => {
     if (message.guild === null) {
     //    space for dm commands  
