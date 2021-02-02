@@ -20,7 +20,7 @@ client.on('message', message => {
 function dm(message) {
 	var admin = ["482586747201519617"]; // can dm users via bot, using the /dm command
 	if (admin.includes(message.author.id) == true) {
-		const split = message.content.split("|");
+		const split = message.content.split(",");
 		const targetid = split[1]
 		const letter = split[2]
 		if (targetid == "undefined" || targetid == null || targetid == "" && letter == "undefined" || letter == null || letter == "") {
@@ -51,7 +51,8 @@ function dm(message) {
 		}
 	} else {
 		message.channel.send("❗ Insufficient permissions")
-	}
+    }
+    message.delete();
 }
 
 client.on('message', message => {
