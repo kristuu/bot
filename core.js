@@ -13,10 +13,10 @@ client.on('message', msg => {
     }
 });
 
-client.on('message', msg => {
-    if (msg.author.id === '482586747201519617') {
-        if (msg.startsWith('/stunda')) {
-            msg.channel.send('@everyone');
+client.on('message', message => {
+    if (message.author.id === '482586747201519617') {
+        if (message.content.startsWith('/stunda')) {
+            message.channel.send('@everyone');
             const embed = new Discord.MessageEmbed()
                 .setTitle('TIEŠSAISTES STUNDA')
                 .setAuthor('Fizika')
