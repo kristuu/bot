@@ -18,10 +18,11 @@ client.on('message', message => {
         if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
             const embed = new Discord.MessageEmbed()
-                .setImage('https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5')
+                .setThumbnail('https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5')
                 .setTitle('FIZIKA')
                 .setAuthor('TIEŠSAISTES STUNDA')
                 .setDescription('Spied uz saites, lai pievienotos stundai: ')
+                .setURL('https://google.lv/')
                 .setFooter('ID: 1234 5678 9101, Passcode: 123456');
             message.channel.send(embed)
         };
