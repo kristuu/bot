@@ -14,26 +14,25 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-    if (!message.guild) return;
-    if (message.content.startsWith('/kick')) {
-        const user = message.mentions.users.first();
+    if (!msg.guild) return;
+    if (msg.content.startsWith('/kick')) {
+        const user = msg.mentions.users.first();
         if (user) {
-            const member = message.guild.member(user);
+            const member = msg.guild.member(user);
             if (member) {
-                member
-                    .kick('Reason, that is displayed in audit logs');
-                    .then(() => {
-                        message.reply(`${user.tag} has been successfully kicked!`);
-                    })
-                    .catch(err => {
-                        message.reply('The action is not performable.');
-                        console.error(err);
-                    })
+                member.kick('Reason, that is displayed in audit logs');
+                member.then(() => {
+                    msg.reply(`${user.tag} has been successfully kicked!`);
+                })
+                member.catch(err => {
+                    msg.reply('The action is not performable.');
+                    console.error(err);
+                })
             } else {
-                message.reply(`The user isn't in this server.`)
+                msg.reply(`The user isn't in this server.`)
             }
         } else {
-            message.reply(`You haven't mentioned an user to kick.`)
+            msg.reply(`You haven't mentioned an user to kick.`)
         }
     }
 });
