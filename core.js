@@ -1,6 +1,6 @@
 client.on('message', message => {
     if (message.guild === null) {
-    //   space for dm commands  
+    //    space for dm commands  
     } else {
         if (message.content == 'ping?') {
                     var a = ['array1', 'array2', 'tu esi padla']
