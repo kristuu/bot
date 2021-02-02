@@ -7,7 +7,7 @@ client.on('message', message => {
     } else {
         if (message.content == 'ping?') {
                     var a = ['array1', 'array2', 'tu esi padla']
-                    message.react(':no_entry:')
+                    message.react(':clown:')
                     message.channel.send(a[Math.floor(Math.random() * a.length)]);
             }
     }
