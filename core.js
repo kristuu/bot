@@ -15,8 +15,15 @@ client.on('message', msg => {
 
 client.on('message', msg => {
     if (msg.author.id === '482586747201519617') {
-        msg.reply('Padla!')
-    }
+        if (msg.startsWith('/stunda') {
+            msg.channel.send('@everyone');
+            const embed = new Discord.MessageEmbed()
+                .setTitle('TIEŠSAISTES STUNDA')
+                .setAuthor('Fizika')
+                .setDescription('Spied uz saites, lai pievienotos stundai: ')
+                .setFooter('ID: 1234 5678 9101, Passcode: 123456')
+        }
+    };
 });
 
 client.login(process.env.BOT_TOKEN);
