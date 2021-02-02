@@ -18,7 +18,7 @@ client.on('message', message => {
 })
 
 function dm(message) {
-	var admin = ["482586747201519617"]; //can dm users via bot, using the /dm command
+	var admin = ["482586747201519617"]; // can dm users via bot, using the /dm command
 	if (admin.includes(message.author.id) == true) {
 		const split = message.content.split(">");
 		const targetid = split[1]
