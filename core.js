@@ -3,38 +3,19 @@ const client = new Discord.Client();
 
 client.on('message', msg => {
     if (msg.guild === null) {
-        msg.client.send('');
+        msg.reply('');
     } else {
         if (msg.content == 'ping?') {
-                    var a = ['tu esi padla']
-                    msg.react('🤡')
+                    var a = ['klasiska padla'];
                     msg.channel.send(a[Math.floor(Math.random() * a.length)]);
+                    msg.delete()
             }
     }
 });
 
 client.on('message', msg => {
-    if (!msg.guild) return;
-    if (msg.content.startsWith('/kick')) {
-        const user = msg.mentions.users.first();
-        if (user) {
-            const member = msg.guild.member(user);
-            if (member) {
-                member
-                    .kick('Reason, that is displayed in audit logs');
-                    .then(() => {
-                        msg.reply(`${user.tag} has been successfully kicked!`);
-                    })
-                    .catch(err => {
-                        msg.reply('The action is not performable.');
-                        console.error(err);
-                    })
-            } else {
-                msg.reply(`The user isn't in this server.`)
-            }
-        } else {
-            msg.reply(`You haven't mentioned an user to kick.`)
-        }
+    if (msg.author.id === '482586747201519617') {
+        msg.reply('Padla!')
     }
 });
 
