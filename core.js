@@ -24,7 +24,7 @@ client.on('message', message => {
                 .setURL('https://google.lv/')
                 .setFooter('ID: 1234 5678 9101, Passcode: 123456')
                 .addFields(
-                { name: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', value: '', inline: false },
+                { name: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', value: 'Sākums - 10:10', inline: false },
                 { name: 'Stundas tēma:', value: 'Praktiskais darbs - spēks un paātrinājums', inline: true }
                 )
             message.channel.send(embed)
