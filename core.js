@@ -21,10 +21,12 @@ client.on('message', message => {
                 .setThumbnail('https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5')
                 .setTitle('FIZIKA')
                 .setAuthor('TIEŠSAISTES STUNDA')
-                .addField('Lai pievienotos stundai, spied uz zili iekrāsotā teksta')
-                .addField('Stundas tēma:', 'Praktiskais darbs - spēks un paātrinājums', inline: true)
                 .setURL('https://google.lv/')
-                .setFooter('ID: 1234 5678 9101, Passcode: 123456');
+                .setFooter('ID: 1234 5678 9101, Passcode: 123456')
+                .addFields(
+                { name: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta' },
+                { name: 'Stundas tēma:', value: 'Praktiskais darbs - spēks un paātrinājums', inline: true }
+                )
             message.channel.send(embed)
         };
     };
