@@ -31,6 +31,7 @@ client.on('message', message => {
 					{
 						name: 'SĀKUMS',
 						value: '13:30, 03/02/2021',
+						inline: true,
 					},
 					{
 						name: 'PLATFORMA',
