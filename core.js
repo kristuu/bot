@@ -2,24 +2,59 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on("ready", () => {
-	client.user.setActivity(`Spotify`, {type: "listening"}); 
+	client.user.setActivity(); 
 });
 
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
-        if (message.content.startsWith('/fizika')) {
+        if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
-            const embed = new Discord.MessageEmbed()
-                .setThumbnail('https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5')
-                .setTitle('Fizika')
-                .setAuthor('TIEŠSAISTES STUNDA')
-                .setURL('https://zoom.us/j/95195738851?pwd=TkROaWd4NCswclBiTXRscUhmLzQzdz09')
-                .setFooter('ID: 951 9573 8851, Passcode: ah1u8Z')
-                .addFields(
-                { name: 'SĀKUMS: Tagad', value: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', inline: true },
-                { name: 'Stundas tēma:', value: 'Praktiskais darbs - spēks un paātrinājums', inline: true }
-                );
-            message.channel.send(embed);
+            const stundaEmbed = {
+				color: 0xB70000,
+				title: 'EIKT tehnisko darbu pamatiemaņas PA2',
+				url: 'https://us05web.zoom.us/j/86872407614?pwd=L1FtejhWTG1IZjZPelV4ekxWYnd1QT09',
+				author: {
+					name: 'TIEŠSAISTES STUNDA',
+					icon_url: 'https://files.mykoob.lv/media/user_data/710646/profile_image/profile_small_6ca84f0abd1be5022ff61a970e175613734ca1ba6ed97012cf16427d2fc272028b973668b94d1ef7e591306c97f078b564e0acbd07436c5e92fc89e5e56a797e.jpg',
+					url: 'https://lv.linkedin.com/in/makolv',
+				},
+				description: 'Lai pieslēgtos stundai, spied uz priekšmeta nosaukuma',
+				thumbnail: {
+					url: 'https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5',
+				},
+				fields: [
+					{
+						name: 'SĀKUMS',
+						value: '13:30, 03/02/2021',
+					},
+					{
+						name: '\u200b',
+						value: '\u200b',
+						inline: false,
+					},
+					{
+						name: 'STUNDAS TĒMA',
+						value: 'Nav informācijas',
+						inline: true,
+					},
+					{
+						name: 'PLATFORMA',
+						value: 'Zoom',
+						inline: true,
+					},
+					{
+						name: 'PIEKĻUVES ID',
+						value: 'ID: 868 7240 7614, Passcode: zdXF4Z',
+						inline: true,
+					},
+				],
+				timestamp: new Date(),
+				footer: {
+					text: 'leprikons @ 2021',
+					icon_url: 'https://media.discordapp.net/attachments/806122097734451220/806188966570229790/c1073552d7dbea3da1b605de2d7c4ff6.png',
+				},
+			};
+            message.channel.send(stundaEmbed);
             message.delete();
         };
     };
