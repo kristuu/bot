@@ -1,6 +1,20 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+client.user.setPresence()
+
+client.on('ready', () => {
+	console.log('Bot: Hosting ' + `${client.users.size}` + ' users, in ' + `${client.channels.size}` + ' channels of ' + `${client.guilds.size}` + ' guilds.');
+		client.user.setStatus('dnd')
+		client.user.setPresence({
+			game: {
+				name: 'Spotify',
+				type: "Listening to",
+				url: "https://open.spotify.com/"
+			}
+		});
+	});
+
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
         if (message.content.startsWith('/fizika')) {
@@ -63,169 +77,6 @@ client.on('message', message => {
 	}
 });
 
-
-async function results(message) {
-	var editor = ["746662409724231798","482586747201519617"]; //application editor Used IDs (can use /results cmd)
-	if (editor.includes(message.author.id) == true) {
-		// Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
-		await doc.useServiceAccountAuth({
-			client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-			private_key: process.env.GOOGLE_PRIVATE_KEY,
-		});
-		await doc.loadInfo(); // loads document properties and worksheets
-		const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
-		await sheet.loadCells();
-		const guild = await client.guilds.fetch('705686666043457606')
-		var newsent = 0
-		var alreadysent = 0
-		var errorsent = 0
-		var output = "```"
-		for (let i = 2; i < 250; i++) {
-			var errored = false
-			var resultsembed
-			var reasons = ""
-			var applicant
-			const mark = sheet.getCellByA1('A' + i);
-			const sent = sheet.getCellByA1('B' + i);
-			const comments = sheet.getCellByA1('C' + i);
-			const grammarfail = sheet.getCellByA1('D' + i);
-			const tooshortfail = sheet.getCellByA1('E' + i);
-			const appsforroleclosedfail = sheet.getCellByA1('F' + i);
-			const unsatisfyingfail = sheet.getCellByA1('G' + i);
-			const toomanyerrorsfail = sheet.getCellByA1('H' + i);
-			const robloxuser = sheet.getCellByA1('L' + i);
-			const tag = sheet.getCellByA1('M' + i);
-			const rank = sheet.getCellByA1('P' + i);
-			try {
-				applicant = guild.members.cache.find((member) => member.user.tag == tag.value)
-			} catch(err) {
-				console.error(err)
-			}
-			if (mark.value === null) {
-				break;
-			} else {
-				if (sent.value === "☐") {
-					if (comments.value === null) {
-						if (mark.value === "PASSED") {
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#2dcc70') //RED - #E74C3C | ORANGE - #CA6F1E | LUGANE GREEN - #2DCC70
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. We're happy to announce that your application for " + rank.value + " within LAP has been **approved**. Information about training and ranking in the Roblox group and our Discord server will be done soon.")
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						} else if (mark.value === "AWAITING FURTHER CLARIFICATION") {
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#CA6F1E')
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. Your application for " + rank.value + " within LAP has been marked as **AWAITING FURTHER CLARIFICATION**. Please see comments for more information.")
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						} else {
-							if (grammarfail.value === "x") {
-								reasons = reasons + "**Too bad grammar:** Your application had too many grammatical errors. Try improving your grammar skills and try applying again next time!\n"
-							}
-							if (tooshortfail.value === "x") {
-								reasons = reasons + "**Too short answers:** Your answers were too short for us or didn't contain enough valuable content.\n"
-							}
-							if (appsforroleclosedfail.value === "x") {
-								reasons = reasons + "**Applications for this role is closed:** Make sure to check if the applications are still open and demand is not met already!\n"
-							}
-							if (unsatisfyingfail.value === "x") {
-								reasons = reasons + "**Non-satisfactory answers:** We wanted to hear something different from your answers. Next time try telling us about you and your hobbies in more detail and show why we should choose you above other applicants!\n"
-							}
-							if (toomanyerrorsfail.value === "x") {
-								reasons = reasons + "**Too many errors on Basic knowledge test:** You received too less points in the test section, therefore, your application was automatically declined.\n"
-							}
-							if (reasons === "") {
-								reasons = "N/A"	
-							}
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#E74C3C')
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. We're sorry to announce that your application for " + rank.value + " within LAP has been **rejected**. You can improve your application and re-apply.")
-							.addFields(
-								{ name: 'Reason(s)', value: reasons },
-							)
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						}
-					} else {
-						if (mark.value === "PASSED") {
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#2dcc70') //RED - #E74C3C | ORANGE - #CA6F1E | LUGANE GREEN - #2DCC70
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. We're happy to announce that your application for " + rank.value + " within LAP has been **approved**. Information about training and ranking in the Roblox group and our Discord server will be done soon.")
-							.addFields(
-								{ name: 'Comments', value: comments.value },
-							)
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						} else if (mark.value === "AWAITING FURTHER CLARIFICATION") {
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#CA6F1E')
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. Your application for " + rank.value + " within LAP has been marked as **AWAITING FURTHER CLARIFICATION**. Please see comments for more information.")
-							.addFields(
-								{ name: 'Comments', value: comments.value },
-							)
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						} else {
-							if (grammarfail.value === "x") {
-								reasons = reasons + "**Too bad grammar:** Your application had too many grammatical errors. Try improving your grammar skills and try applying again next time!\n"
-							}
-							if (tooshortfail.value === "x") {
-								reasons = reasons + "**Too short answers:** Your answers were too short for us or didn't contain enough valuable content.\n"
-							}
-							if (appsforroleclosedfail.value === "x") {
-								reasons = reasons + "**Applications for this role is closed:** Make sure to check if the applications are still open and demand is not met already!\n"
-							}
-							if (unsatisfyingfail.value === "x") {
-								reasons = reasons + "**Non-satisfactory answers:** We wanted to hear something different from your answers. Next time try telling us about you and your hobbies in more detail and show why we should choose you above other applicants!\n"
-							}
-							if (toomanyerrorsfail.value === "x") {
-								reasons = reasons + "**Too many errors on Basic knowledge test:** You received too less points in the test section, therefore, your application was automatically declined.\n"
-							}
-							if (reasons === "") {
-								reasons = "N/A"	
-							}
-							resultsembed = new Discord.MessageEmbed()
-							.setColor('#E74C3C')
-							.setTitle("Application " + mark.value)
-							.setDescription("Hello, " + robloxuser.value + "!\nThank you for your interest in our group. We're sorry to announce that your application for " + rank.value + " within LAP has been **rejected**. You can improve your application and re-apply.")
-							.addFields(
-								{ name: 'Reason(s)', value: reasons },
-								{ name: 'Comments', value: comments.value },
-							)
-							.setFooter('For any questions, feedback or errors - reply in this DM');
-						}
-					}
-					sent.value = "☑"
-					//console.log(applicant.id)
-					try {
-						applicant.send(resultsembed)
-					} catch (err) {
-						if (err == "TypeError: Cannot read property 'send' of undefined") {
-							output = output + "[!] ==================================\n[!] Failed to send results! (" + tag.value + ")\n" + err + "\nThis error usually happens when the tag provided in application from is invalid - missing a number/letter, having spaces at begging or end, etc. Check the user tag for issues and try again or contact bot administrator!\n[!] ==================================\n"
-						} else {
-							output = output + "[!] ==================================\n[!] Failed to send results! (" + tag.value + ")\n" + err + "\nWe haven't heard of this error! Tag a bot developer for additional help.\n[!] ==================================\n"
-						}
-						errored = true
-						sent.value = "☐"
-						errorsent = errorsent + 1
-					}
-					await sheet.saveUpdatedCells();
-					if (errored === false) {
-						output = output + "[+] Results sent! (" + tag.value + ")\n"
-						newsent = newsent + 1
-					}
-				} else {
-					output = output + "    Already sent! (" + tag.value + ")\n"
-					alreadysent = alreadysent + 1
-				}
-			}
-		}
-		message.channel.send(output + "```")
-		message.channel.send("```All results sent!\n-----------------\nResults sent: " + newsent + "\nAlready sent: " + alreadysent + "\nFailed to send: " + errorsent + "```")
-		} else {
-			message.channel.send("❗ Insufficient permissions")
-		}
-}
 function dm(message) {
 	var admin = ["746662409724231798","482586747201519617","290452091946663936"]; //can dm users via bot, using the /dm command
 	if (admin.includes(message.author.id) == true) {
