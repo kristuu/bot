@@ -9,14 +9,15 @@ client.on('message', message => {
     if (message.author.id === '482586747201519617') {
         if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
-            const stundaEmbed = {
-				color: 0xFCFCFC,
-				title: 'EIKT tehnisko darbu pamatiemaņas PA2',
-				url: 'https://us05web.zoom.us/j/86872407614?pwd=L1FtejhWTG1IZjZPelV4ekxWYnd1QT09',
+			const split = message.content.split("|");
+			const stundaEmbed = {
+				color: split[1],
+				title: split[2],
+				url: split[3],
 				author: {
 					name: 'TIEŠSAISTES STUNDA',
-					icon_url: 'https://files.mykoob.lv/media/user_data/710646/profile_image/profile_small_6ca84f0abd1be5022ff61a970e175613734ca1ba6ed97012cf16427d2fc272028b973668b94d1ef7e591306c97f078b564e0acbd07436c5e92fc89e5e56a797e.jpg',
-					url: 'https://lv.linkedin.com/in/makolv',
+					icon_url: split[4],
+					url: split[5],
 				},
 				description: 'Lai pieslēgtos stundai, spied uz priekšmeta nosaukuma',
 				thumbnail: {
@@ -25,12 +26,12 @@ client.on('message', message => {
 				fields: [
 					{
 						name: 'SĀKUMS',
-						value: '13:30, 03/02/2021',
+						value: `${split[6]}, ${split[7]}/02/2021`,
 						inline: true,
 					},
 					{
 						name: 'PLATFORMA',
-						value: 'Zoom',
+						value: split[8],
 						inline: true,
 					},
 					{
@@ -40,12 +41,12 @@ client.on('message', message => {
 					},
 					{
 						name: 'STUNDAS TĒMA',
-						value: 'Nav informācijas',
+						value: split[9],
 						inline: false,
 					},
 					{
 						name: 'PIEKĻUVES ID',
-						value: 'ID: 868 7240 7614, Passcode: zdXF4Z',
+						value: `ID: ${split[10]}, Passcode: ${split[11]}`,
 						inline: false,
 					},
 				],
