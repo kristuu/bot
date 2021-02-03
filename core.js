@@ -10,7 +10,7 @@ client.on('message', message => {
         if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
             const stundaEmbed = {
-				color: 0xFFFFFF,
+				color: 0xFCFCFC,
 				title: 'EIKT tehnisko darbu pamatiemaņas PA2',
 				url: 'https://us05web.zoom.us/j/86872407614?pwd=L1FtejhWTG1IZjZPelV4ekxWYnd1QT09',
 				author: {
@@ -24,11 +24,6 @@ client.on('message', message => {
 				},
 				fields: [
 					{
-						name: '\u200b',
-						value: '\u200b',
-						inline: false,
-					},
-					{
 						name: 'SĀKUMS',
 						value: '13:30, 03/02/2021',
 						inline: true,
@@ -37,6 +32,11 @@ client.on('message', message => {
 						name: 'PLATFORMA',
 						value: 'Zoom',
 						inline: true,
+					},
+					{
+						name: '\u200b',
+						value: '\u200b',
+						inline: false,
 					},
 					{
 						name: 'STUNDAS TĒMA',
