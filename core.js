@@ -10,7 +10,7 @@ client.on('message', message => {
         if (message.content.startsWith('/stunda')) {
             message.channel.send('@everyone');
             const stundaEmbed = {
-				color: 0xB70000,
+				color: 0xFFFFFF,
 				title: 'EIKT tehnisko darbu pamatiemaņas PA2',
 				url: 'https://us05web.zoom.us/j/86872407614?pwd=L1FtejhWTG1IZjZPelV4ekxWYnd1QT09',
 				author: {
@@ -24,18 +24,13 @@ client.on('message', message => {
 				},
 				fields: [
 					{
-						name: 'SĀKUMS',
-						value: '13:30, 03/02/2021',
-					},
-					{
 						name: '\u200b',
 						value: '\u200b',
 						inline: false,
 					},
 					{
-						name: 'STUNDAS TĒMA',
-						value: 'Nav informācijas',
-						inline: true,
+						name: 'SĀKUMS',
+						value: '13:30, 03/02/2021',
 					},
 					{
 						name: 'PLATFORMA',
@@ -43,9 +38,14 @@ client.on('message', message => {
 						inline: true,
 					},
 					{
+						name: 'STUNDAS TĒMA',
+						value: 'Nav informācijas',
+						inline: false,
+					},
+					{
 						name: 'PIEKĻUVES ID',
 						value: 'ID: 868 7240 7614, Passcode: zdXF4Z',
-						inline: true,
+						inline: false,
 					},
 				],
 				timestamp: new Date(),
