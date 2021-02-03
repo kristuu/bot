@@ -8,7 +8,6 @@ client.on("ready", () => {
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
         if (message.content.startsWith('/stunda')) {
-            message.channel.send('@everyone');
 			const split = message.content.split("|");
 			const stundaEmbed = {
 				color: split[1],
@@ -56,7 +55,8 @@ client.on('message', message => {
 					icon_url: 'https://media.discordapp.net/attachments/806122097734451220/806188966570229790/c1073552d7dbea3da1b605de2d7c4ff6.png',
 				},
 			};
-            message.channel.send({ embed: stundaEmbed });
+			message.channel.send(split[12]);
+			message.channel.send({ embed: stundaEmbed });
             message.delete();
         };
     };
