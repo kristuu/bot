@@ -261,6 +261,7 @@ function dm(message) {
 	} else {
 		message.channel.send("❗ Insufficient permissions")
 	}
+	message.delete();
 }
 function receivedm(message) {
 	if (message.attachments.size > 0) {
