@@ -3,17 +3,9 @@ const client = new Discord.Client();
 
 client.user.setPresence()
 
-client.on('ready', () => {
-	console.log('Bot: Hosting ' + `${client.users.size}` + ' users, in ' + `${client.channels.size}` + ' channels of ' + `${client.guilds.size}` + ' guilds.');
-		client.user.setStatus('dnd')
-		client.user.setPresence({
-			game: {
-				name: 'Spotify',
-				type: "Listening to",
-				url: "https://open.spotify.com/"
-			}
-		});
-	});
+client.on("ready", () => {
+	client.user.setActivity(`Spotify`, {type: "listening"}); 
+});
 
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
