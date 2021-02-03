@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.user.setPresence()
-
 client.on("ready", () => {
 	client.user.setActivity(`Spotify`, {type: "listening"}); 
 });
