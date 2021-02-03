@@ -4,13 +4,13 @@ const client = new Discord.Client();
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
         if (message.content.startsWith('/stunda')) {
-            // message.channel.send('@everyone');
+            message.channel.send('@everyone');
             const embed = new Discord.MessageEmbed()
                 .setThumbnail('https://lh3.googleusercontent.com/proxy/bk3MS2-oJeoNu4GPT6-Cvn5GTt6q8MmO6gohbTYLBFVg1pl-wjBBTlX4NPjxJgDCe3Kpx6yoQesCSjF7wDkwovii2ichXU-BuAFeo1CIJ_d5')
                 .setTitle('Fizika')
                 .setAuthor('TIEŠSAISTES STUNDA')
-                .setURL('https://google.lv/')
-                .setFooter('ID: 1234 5678 9101, Passcode: 123456')
+                .setURL('https://zoom.us/j/95195738851?pwd=TkROaWd4NCswclBiTXRscUhmLzQzdz09')
+                .setFooter('ID: 951 9573 8851, Passcode: ah1u8Z')
                 .addFields(
                 { name: 'SĀKUMS 10:10, 03/02/2021', value: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', inline: true },
                 { name: 'Stundas tēma:', value: 'Praktiskais darbs - spēks un paātrinājums', inline: true }
