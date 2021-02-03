@@ -12,7 +12,7 @@ client.on('message', message => {
                 .setURL('https://zoom.us/j/95195738851?pwd=TkROaWd4NCswclBiTXRscUhmLzQzdz09')
                 .setFooter('ID: 951 9573 8851, Passcode: ah1u8Z')
                 .addFields(
-                { name: 'SĀKUMS: Tagad ', value: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', inline: true },
+                { name: 'SĀKUMS: Tagad', value: 'Lai pievienotos stundai, spied uz zili iekrāsotā teksta', inline: true },
                 { name: 'Stundas tēma:', value: 'Praktiskais darbs - spēks un paātrinājums', inline: true }
                 );
             message.channel.send(embed);
