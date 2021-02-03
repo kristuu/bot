@@ -8,7 +8,7 @@ client.on("ready", () => {
 client.on('message', message => {
     if (message.author.id === '482586747201519617') {
         if (message.content.startsWith('/stunda')) {
-            //message.channel.send('@everyone');
+            message.channel.send('@everyone');
             const stundaEmbed = {
 				color: 0xFCFCFC,
 				title: 'EIKT tehnisko darbu pamatiemaņas PA2',
